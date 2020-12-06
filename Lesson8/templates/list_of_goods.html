@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list of goods categories</title>
+</head>
+<body>
+<h1>There are our categories:</h1>
+    {% for id, v in goods.items() %}
+    <p><a href="/{{id}}">{{v.name_of_good}}{{id}}</a></p>
+    {% endfor %}
+<p><a href="/categories">To categories</a></p>
+</body>
+</html>
