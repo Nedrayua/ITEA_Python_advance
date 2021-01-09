@@ -36,7 +36,7 @@ def user_registration(message):
                     'WSH': {'wishes': message.text[-4:]}
                     }
     print(options_dict[message.text[-3:]])
-    guest.modify(**options_dict[message.text[-3:]])
+    guest.save(**options_dict[message.text[-3:]])
 
 
 @bot.message_handler(content_types='text')
