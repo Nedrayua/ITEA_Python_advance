@@ -1,5 +1,5 @@
 import random
-
+import json
 from models import Product, Category
 
 parent_category = {
@@ -84,6 +84,7 @@ sub_category_describes = {
                   ' и с помощью динамиков. '
 
 }
+
 
 def create_category(collection_names, collection_describes):
     for cat in collection_names.keys():

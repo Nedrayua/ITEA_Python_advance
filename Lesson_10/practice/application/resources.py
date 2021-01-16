@@ -32,6 +32,14 @@ class PostResource(Resource):
             PostSchema().load(request.json)
         except ValidationError as e:
             return str(e)
+
+        if request.json['author']:
+            request.json['author'] = Author.objects.get(id=request.json['author'])
+
+        if request.json['tag']:
+            for i in range(len(request.json['tag'])):
+                request.json['tag'][i] = Tag.objects.get(id=request.json['tag'][i])
+
         post = Post.objects.get(id=id)
         post.update(**request.json)
         post.reload()
@@ -65,6 +73,9 @@ class AuthorResource(Resource):
             AuthorSchema().load(request.json)
         except ValidationError as e:
             return str(e)
+        if request.json['publication']:
+            for i in range(len(request.json['publication'])):
+                request.json['publication'][i] = Post.objects.get(id=request.json['publication'][i])
         author = Author.objects.get(id=id)
         author.update(**request.json)
         author.reload()
@@ -89,6 +100,7 @@ class TagResource(Resource):
             TagSchema().load(request.json)
         except ValidationError as e:
             return str(e)
+
         tag = Tag(**request.json)
         tag.save()
         return TagSchema().dump(tag)
@@ -98,6 +110,11 @@ class TagResource(Resource):
             TagSchema().load(request.json)
         except ValidationError as e:
             return str(e)
+
+        if request.json['post']:
+            for i in range(len(request.json['post'])):
+                request.json['post'][i] = Post.objects.get(id=request.json['post'][i])
+
         tag = Tag.objects.get(id=id)
         tag.update(**request.json)
         tag.reload()

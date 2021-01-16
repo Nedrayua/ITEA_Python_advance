@@ -56,3 +56,45 @@ class Author(me.Document):
         for post in self.publication:
             queryset.append(json.loads(post.to_json()))
         return queryset
+
+
+# tag = Tag.objects.get(id="5ff57d52c69c3357f2aaead5")
+# print(tag.post)
+# id_post = "5ff56dd35ac676a7982e07f9"
+# print(list(enumerate(tag.post)))
+# dict_refuge = {}
+# for doc in tag.post:
+#     if doc.id in dict_refuge.keys():
+#         dict_refuge[doc.id] += 1
+#     else:
+#         dict_refuge.setdefault(doc.id, 1)
+#
+#
+# print(dict_refuge)
+
+
+
+
+
+
+
+# print(tag.post.count())
+# index = 0
+# for i in tag.post:
+#     if str(i.id) == id_post:
+#         print(index)
+#     else:
+#         # print(index)
+#         print(type(i.id))
+#         index += 1
+#
+# tag.post.pop(5)
+# tag.save()
+# index = 0
+# for i in tag.post:
+#     if str(i.id) == id_post:
+#         print(index)
+#     else:
+#         # print(index)
+#         print(type(i.id))
+#         index += 1
